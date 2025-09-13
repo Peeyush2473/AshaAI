@@ -1,8 +1,8 @@
 /* ===================================================================
-   Asha-AI 2.0 :: Professional Government Dashboard - FIXED VERSION
-   Version: 2.0.1
+   Asha-AI 2.0 :: Professional Government Dashboard
+   Version: 2.0
    Description: Clean, professional design for government/NGO
-                health monitoring platform with fixed sidebar layout
+                health monitoring platform with light/dark mode support
    =================================================================== */
 
 /* -------------------------------------------------------------------
@@ -57,10 +57,6 @@
   --space-8: 2rem;        /* 32px */
   --space-10: 2.5rem;     /* 40px */
   --space-12: 3rem;       /* 48px */
-  
-  /* Layout Constants */
-  --sidebar-width: 280px;
-  --header-height: 0px;
   
   /* Border Radius */
   --radius-sm: 0.25rem;
@@ -163,58 +159,26 @@ body {
 }
 
 /* -------------------------------------------------------------------
- * ## 3. Fixed Dashboard Layout
+ * ## 3. Dashboard Layout
  * ------------------------------------------------------------------- */
-.dashboard-layout {
-  display: flex;
-  min-height: 100vh;
-  background-color: var(--color-surface);
-}
-
 .dashboard-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 280px 1fr;
   min-height: 100vh;
   background-color: var(--color-surface);
 }
 
 /* -------------------------------------------------------------------
- * ## 4. Fixed Sidebar Design
+ * ## 4. Sidebar Design
  * ------------------------------------------------------------------- */
 .sidebar {
-  width: var(--sidebar-width);
-  min-width: var(--sidebar-width);
-  max-width: var(--sidebar-width);
-  height: 100vh;
-  position: fixed;
-  left: 0;
-  top: 0;
   background-color: var(--color-background);
   border-right: 1px solid var(--color-border);
   padding: var(--space-6);
   display: flex;
   flex-direction: column;
+  position: relative;
   overflow-y: auto;
-  z-index: 100;
-  box-shadow: var(--shadow-lg);
-}
-
-/* Main Content with Fixed Sidebar Offset */
-.main-content {
-  margin-left: var(--sidebar-width);
-  width: calc(100% - var(--sidebar-width));
-  min-height: 100vh;
-  padding: var(--space-8);
-  background-color: var(--color-surface);
-  overflow-x: hidden;
-}
-
-.dashboard-content {
-  margin-left: var(--sidebar-width);
-  width: calc(100% - var(--sidebar-width));
-  min-height: 100vh;
-  padding: var(--space-8);
-  background-color: var(--color-surface);
-  overflow-x: hidden;
 }
 
 /* Sidebar Logo */
@@ -252,8 +216,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
-  margin: 0;
-  padding: 0;
 }
 
 .sidebar-nav li {
@@ -296,38 +258,6 @@ body {
   margin-top: auto;
   padding-top: var(--space-6);
   border-top: 1px solid var(--color-border);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-
-/* Theme Toggle in Sidebar */
-.theme-toggle-button {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  width: 100%;
-  padding: var(--space-3) var(--space-4);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background-color: var(--color-surface);
-  color: var(--color-text-secondary);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.theme-toggle-button:hover {
-  background-color: var(--color-background);
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-}
-
-.theme-toggle-button svg {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
 }
 
 .sidebar-logout-button {
@@ -357,8 +287,15 @@ body {
 }
 
 /* -------------------------------------------------------------------
- * ## 5. Page Header & Content
+ * ## 5. Main Dashboard Content
  * ------------------------------------------------------------------- */
+.dashboard-content {
+  padding: var(--space-8);
+  overflow-y: auto;
+  background-color: var(--color-surface);
+}
+
+/* Page Header */
 .page-header {
   margin-bottom: var(--space-8);
 }
@@ -475,6 +412,45 @@ body {
   color: white;
 }
 
+/* Loading States */
+.stat-card.loading {
+  opacity: 0.7;
+}
+
+.card-icon-skeleton,
+.skeleton {
+  background: linear-gradient(90deg, 
+    var(--color-border-light) 25%, 
+    var(--color-border) 50%, 
+    var(--color-border-light) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+  border-radius: var(--radius-md);
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.card-icon-skeleton {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+}
+
+.title-skeleton {
+  height: 14px;
+  width: 60%;
+  margin-bottom: var(--space-3);
+}
+
+.value-skeleton {
+  height: 32px;
+  width: 40%;
+  margin-bottom: var(--space-2);
+}
+
 /* -------------------------------------------------------------------
  * ## 7. Content Grid & Cards
  * ------------------------------------------------------------------- */
@@ -491,7 +467,6 @@ body {
   border-radius: var(--radius-xl);
   padding: var(--space-6);
   transition: all var(--transition-normal);
-  margin-bottom: var(--space-6);
 }
 
 .content-card.full-width {
@@ -535,169 +510,66 @@ body {
   position: relative;
 }
 
-/* -------------------------------------------------------------------
- * ## 8. Campaign Planner Specific Styles
- * ------------------------------------------------------------------- */
-.campaign-form {
+.loading-map {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-  padding: 0;
-}
-
-.filter-group {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.filter-group label {
-  display: block;
-  font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-2);
-}
-
-.filter-group select {
-  width: 100%;
-  padding: var(--space-3);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  font-size: var(--text-base);
-  background-color: var(--color-background);
-  color: var(--color-text-primary);
-  transition: all var(--transition-fast);
-}
-
-.filter-group select:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
-}
-
-/* Loading Spinner */
-.loading-spinner-container {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 200px;
-  gap: var(--space-4);
-  text-align: center;
+  height: 500px;
   color: var(--color-text-secondary);
-}
-
-.loading-spinner {
-  width: 40px;
-  height: 40px;
-  border: 4px solid var(--color-border);
-  border-top: 4px solid var(--color-primary);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Plan Results */
-.plan-results {
-  margin-top: 0;
-}
-
-.plan-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-6);
-  margin-bottom: var(--space-6);
-}
-
-.plan-detail-card {
-  background-color: var(--color-surface);
-  padding: var(--space-6);
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-normal);
-}
-
-.plan-detail-card:hover {
-  border-color: var(--color-primary);
-  box-shadow: var(--shadow-md);
-}
-
-.plan-detail-card.full-width {
-  grid-column: 1 / -1;
-}
-
-.plan-detail-card h3 {
   font-size: var(--text-lg);
+}
+
+/* Map Legend */
+.legend-container {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  line-height: 1.5;
+  font-size: var(--text-sm);
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  min-width: 120px;
+}
+
+.legend-container h4 {
+  margin: 0 0 var(--space-2) 0;
+  font-size: var(--text-sm);
   font-weight: 600;
-  color: var(--color-primary);
-  margin-bottom: var(--space-3);
+  color: var(--color-text-primary);
+}
+
+.legend-container div {
   display: flex;
   align-items: center;
   gap: var(--space-2);
-}
-
-.plan-detail-card p {
-  font-size: var(--text-base);
-  color: var(--color-text-primary);
-  line-height: 1.6;
-}
-
-/* Table Styles */
-.table-container {
-  width: 100%;
-  overflow-x: auto;
-  margin-bottom: var(--space-6);
-}
-
-.data-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: var(--color-background);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-}
-
-.data-table th,
-.data-table td {
-  padding: var(--space-4);
-  text-align: left;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.data-table th {
-  background-color: var(--color-surface);
-  font-weight: 600;
-  color: var(--color-text-primary);
-  font-size: var(--text-sm);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.data-table td {
+  margin-bottom: var(--space-1);
   color: var(--color-text-secondary);
-  font-size: var(--text-sm);
 }
 
-.data-table tbody tr:hover {
-  background-color: var(--color-surface);
+.legend-container div:last-child {
+  margin-bottom: 0;
+}
+
+.legend-color-box {
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  flex-shrink: 0;
 }
 
 /* -------------------------------------------------------------------
- * ## 9. Interactive Elements
+ * ## 8. Interactive Elements
  * ------------------------------------------------------------------- */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  padding: var(--space-3) var(--space-6);
+  padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-lg);
   border: 1px solid transparent;
   font-weight: 600;
@@ -705,18 +577,11 @@ body {
   cursor: pointer;
   transition: all var(--transition-fast);
   text-decoration: none;
-  text-align: center;
-  justify-content: center;
 }
 
 .btn:focus {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
-}
-
-.btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
 }
 
 .btn-primary {
@@ -725,7 +590,7 @@ body {
   border-color: var(--color-primary);
 }
 
-.btn-primary:hover:not(:disabled) {
+.btn-primary:hover {
   background-color: var(--color-primary-hover);
   border-color: var(--color-primary-hover);
 }
@@ -736,42 +601,110 @@ body {
   border-color: var(--color-secondary);
 }
 
-.btn-secondary:hover:not(:disabled) {
+.btn-secondary:hover {
   background-color: var(--color-secondary-hover);
   border-color: var(--color-secondary-hover);
 }
 
 /* -------------------------------------------------------------------
- * ## 10. Responsive Design
+ * ## 9. Forms
+ * ------------------------------------------------------------------- */
+.form-group {
+  margin-bottom: var(--space-5);
+}
+
+.form-label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  font-size: var(--text-base);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  transition: all var(--transition-fast);
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+}
+
+/* -------------------------------------------------------------------
+ * ## 10. Theme Toggle Button
+ * ------------------------------------------------------------------- */
+.theme-toggle {
+  position: fixed;
+  top: var(--space-6);
+  right: var(--space-6);
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  z-index: 1000;
+  box-shadow: var(--shadow-md);
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* -------------------------------------------------------------------
+ * ## 11. Responsive Design
  * ------------------------------------------------------------------- */
 @media (max-width: 1024px) {
-  :root {
-    --sidebar-width: 240px;
+  .dashboard-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    height: 100vh;
+    z-index: 1000;
+    transition: left var(--transition-normal);
+    box-shadow: var(--shadow-xl);
+  }
+  
+  .sidebar.open {
+    left: 0;
   }
   
   .content-grid {
     grid-template-columns: 1fr;
   }
   
-  .plan-grid {
-    grid-template-columns: 1fr;
+  .dashboard-content {
+    padding: var(--space-6);
   }
 }
 
 @media (max-width: 768px) {
-  .sidebar {
-    transform: translateX(-100%);
-    transition: transform var(--transition-normal);
-  }
-  
-  .sidebar.open {
-    transform: translateX(0);
-  }
-  
-  .main-content,
   .dashboard-content {
-    margin-left: 0;
-    width: 100%;
     padding: var(--space-4);
   }
   
@@ -792,18 +725,38 @@ body {
     padding: var(--space-4);
   }
   
-  .campaign-form {
-    gap: var(--space-4);
+  .map-container-wrapper {
+    height: 400px;
   }
   
-  .plan-detail-card {
-    padding: var(--space-4);
+  .chart-container {
+    height: 300px;
+  }
+  
+  /* Mobile Filter Bar */
+  .filter-bar {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  
+  .filter-group {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .filter-bar .btn-secondary {
+    margin-left: 0;
+    align-self: stretch;
+  }
+  
+  /* Mobile Table */
+  .table-container {
+    font-size: var(--text-xs);
   }
   
   .data-table th,
   .data-table td {
     padding: var(--space-2) var(--space-3);
-    font-size: var(--text-xs);
   }
 }
 
@@ -814,8 +767,6 @@ body {
   
   .stat-card {
     padding: var(--space-4);
-    flex-direction: column;
-    text-align: center;
   }
   
   .stat-card-value,
@@ -823,36 +774,14 @@ body {
     font-size: var(--text-2xl);
   }
   
-  .btn {
-    padding: var(--space-3) var(--space-4);
-    font-size: var(--text-xs);
+  .sidebar {
+    width: 100vw;
+    left: -100vw;
   }
 }
 
 /* -------------------------------------------------------------------
- * ## 11. Loading States & Animations
- * ------------------------------------------------------------------- */
-.loading {
-  opacity: 0.7;
-}
-
-.skeleton {
-  background: linear-gradient(90deg, 
-    var(--color-border-light) 25%, 
-    var(--color-border) 50%, 
-    var(--color-border-light) 75%);
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
-  border-radius: var(--radius-md);
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-/* -------------------------------------------------------------------
- * ## 12. Utility Classes
+ * ## 11. Utility Classes
  * ------------------------------------------------------------------- */
 .text-center { text-align: center; }
 .text-right { text-align: right; }
@@ -878,3 +807,92 @@ body {
 .shadow-sm { box-shadow: var(--shadow-sm); }
 .shadow-md { box-shadow: var(--shadow-md); }
 .shadow-lg { box-shadow: var(--shadow-lg); }
+
+
+
+
+
+/* -------------------------------------------------------------------
+ * ## 8. Campaign Planner Page Specifics
+ * ------------------------------------------------------------------- */
+/* Campaign Form */
+.campaign-form {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-unit) * 2);
+  padding: calc(var(--spacing-unit) * 2);
+}
+
+/* Loading Spinner */
+.loading-spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  gap: calc(var(--spacing-unit) * 2);
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border-color);
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Plan Results */
+.plan-results {
+  margin-top: calc(var(--spacing-unit) * 3);
+}
+
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: calc(var(--spacing-unit) * 3);
+  margin-bottom: calc(var(--spacing-unit) * 3);
+}
+
+.plan-detail-card {
+  background-color: var(--bg-sidebar);
+  padding: calc(var(--spacing-unit) * 2);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--box-shadow);
+}
+
+.plan-detail-card.full-width {
+  grid-column: 1 / -1;
+}
+
+.plan-detail-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-unit);
+}
+
+.plan-detail-card p {
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .plan-grid {
+    grid-template-columns: 1fr; /* Stack cards on small screens */
+  }
+  .campaign-form {
+    padding: calc(var(--spacing-unit) * 1.5);
+  }
+}
+

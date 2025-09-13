@@ -15,6 +15,7 @@ import LoginPage from './pages/LoginPage.jsx';
 import DashboardOverview from './pages/DashboardOverview.jsx';
 import AnalyticsPage from './pages/AnalyticsPage.jsx';
 import ResourcePage from './pages/ResourcePage.jsx';
+import CampaignPlannerPage from './pages/CampaignPlannerPage.jsx';
 
 /**
  * @component ProtectedRoute
@@ -64,7 +65,8 @@ function App() {
             <Route path="/" element={<DashboardOverview />} />
             <Route path="/analytics" element={<AnalyticsPage />} />
             <Route path="/resources" element={<ResourcePage />} />
-            {/* Add other protected routes like /campaigns here in the future */}
+            <Route path="/campaigns" element={<CampaignPlannerPage />} />
+            
           </Route>
 
           {/* Fallback Route: Redirect any other path to the dashboard if logged in, or login if not */}

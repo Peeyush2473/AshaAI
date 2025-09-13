@@ -93,6 +93,7 @@ const DashboardOverview = () => {
                     {/* Yahan aap alerts ki list dikha sakte hain */}
                     <p style={{textAlign: 'center', padding: '20px'}}>No new alerts.</p>
                 </div>
+                
             </div>
         </DashboardLayout>
     );
