@@ -15,10 +15,12 @@
   --secondary-color: #f57c00; /* Muted Saffron/Orange for accents */
   --accent-color-success: #2e7d32; /* Green for success states */
   --accent-color-danger: #c62828; /* Red for alerts */
+  --accent-color-warning: #ffca28; /* Yellow for medium risk (added) */
   
   --bg-main: #f4f7f9; /* Light grey for the main background */
   --bg-sidebar: #ffffff; /* White for the sidebar and cards */
   --border-color: #e0e0e0; /* Subtle border color */
+  --background-color: #fff; /* Added for form inputs (was undefined) */
   
   --text-primary: #212121; /* Dark grey for primary text */
   --text-secondary: #616161; /* Lighter grey for secondary text */
@@ -50,6 +52,7 @@ body {
   background-color: var(--bg-main);
   color: var(--text-primary);
   line-height: 1.6;
+  min-height: 100vh; /* Ensure body fills viewport */
 }
 
 /* Custom Scrollbar */
@@ -67,7 +70,6 @@ body {
   background: #aaa;
 }
 
-
 /* -------------------------------------------------------------------
  * ## 2. Main Layout
  * ------------------------------------------------------------------- */
@@ -79,6 +81,7 @@ body {
     "header header"
     "sidebar main";
   height: 100vh;
+  overflow: hidden; /* Prevent overflow issues */
 }
 
 .main-header {
@@ -90,18 +93,21 @@ body {
   align-items: center;
   justify-content: space-between;
   height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .main-header .logo {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-unit);
-    font-weight: 600;
-    font-size: 20px;
-    color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-unit);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--primary-color);
 }
 .main-header .logo img {
-    height: 32px; /* Add your logo here */
+  height: 32px; /* Add your logo here */
 }
 
 .sidebar {
@@ -111,23 +117,25 @@ body {
   padding: calc(var(--spacing-unit) * 3);
   display: flex;
   flex-direction: column;
+  overflow-y: auto; /* Scrollable sidebar if content overflows */
 }
 
 .main-content {
   grid-area: main;
-  overflow-y: auto;
+  overflow-y: auto; /* Scrollable content */
   padding: calc(var(--spacing-unit) * 4);
+  background-color: var(--bg-main);
 }
 
 .page-header {
-    margin-bottom: calc(var(--spacing-unit) * 3);
+  margin-bottom: calc(var(--spacing-unit) * 3);
 }
 .page-header h1 {
-    font-size: 28px;
-    font-weight: 600;
+  font-size: 28px;
+  font-weight: 600;
 }
 .page-header p {
-    color: var(--text-secondary);
+  color: var(--text-secondary);
 }
 
 /* -------------------------------------------------------------------
@@ -136,152 +144,48 @@ body {
 
 /* Sidebar Navigation */
 .sidebar-nav {
-    list-style: none;
-    margin-top: calc(var(--spacing-unit) * 4);
-    flex-grow: 1;
+  list-style: none;
+  margin-top: calc(var(--spacing-unit) * 4);
+  flex-grow: 1;
 }
 .sidebar-nav li a {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-unit) * 1.5;
-    padding: var(--spacing-unit) * 1.5;
-    border-radius: var(--border-radius);
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-weight: 500;
-    transition: background-color 0.2s ease, color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing-unit) * 1.5);
+  padding: calc(var(--spacing-unit) * 1.5);
+  border-radius: var(--border-radius);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 .sidebar-nav li a:hover {
-    background-color: #e3f2fd; /* Light blue hover */
-    color: var(--primary-color);
+  background-color: #e3f2fd; /* Light blue hover */
+  color: var(--primary-color);
 }
 .sidebar-nav li a.active {
-    background-color: var(--primary-color);
-    color: var(--text-light);
+  background-color: var(--primary-color);
+  color: var(--text-light);
 }
 
 /* Stat Cards */
 .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: calc(var(--spacing-unit) * 3);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: calc(var(--spacing-unit) * 3);
+  margin-bottom: calc(var(--spacing-unit) * 3);
 }
 
 .stat-card {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing-unit) * 2);
   background-color: var(--bg-sidebar);
   padding: calc(var(--spacing-unit) * 2.5);
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-}
-.stat-card .card-title {
-  font-size: 14px;
-  color: var(--text-secondary);
-  font-weight: 500;
-}
-.stat-card .card-value {
-  font-size: 36px;
-  font-weight: 600;
-  color: var(--primary-color);
-  margin-top: var(--spacing-unit);
-}
-
-/* Main Content Cards (for map, charts, etc.) */
-.content-card {
-    background-color: var(--bg-sidebar);
-    padding: calc(var(--spacing-unit) * 3);
-    border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--box-shadow);
-    margin-top: calc(var(--spacing-unit) * 3);
-}
-.content-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: calc(var(--spacing-unit) * 2);
-}
-.content-card-header h2 {
-    font-size: 18px;
-    font-weight: 600;
-}
-
-/* Buttons */
-.btn {
-    padding: calc(var(--spacing-unit) * 1.25) calc(var(--spacing-unit) * 2.5);
-    border-radius: var(--border-radius);
-    border: none;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-.btn-primary {
-    background-color: var(--primary-color);
-    color: var(--text-light);
-}
-.btn-primary:hover {
-    background-color: var(--primary-color-dark);
-}
-
-/* Forms (for Login) */
-.form-group {
-    margin-bottom: calc(var(--spacing-unit) * 2);
-}
-.form-group label {
-    display: block;
-    margin-bottom: var(--spacing-unit);
-    font-weight: 500;
-    color: var(--text-secondary);
-}
-.form-group input {
-    width: 100%;
-    padding: calc(var(--spacing-unit) * 1.5);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    font-family: var(--font-family-main);
-    font-size: 16px;
-}
-.form-group input:focus {
-    outline: 2px solid var(--primary-color);
-    border-color: var(--primary-color);
-}
-
-
-/* -------------------------------------------------------------------
- * ## 4. Responsive Design
- * ------------------------------------------------------------------- */
-@media (max-width: 768px) {
-  .dashboard-layout {
-    grid-template-columns: 1fr; /* Stack sidebar and main content */
-    grid-template-areas:
-      "header"
-      "main";
-    /* Note: Sidebar would need to be toggled with JavaScript */
-  }
-  .sidebar {
-      position: absolute;
-      transform: translateX(-100%);
-      transition: transform 0.3s ease-in-out;
-      z-index: 1000;
-      height: 100%;
-  }
-  .sidebar.is-open {
-      transform: translateX(0);
-  }
-}
-
-
-
-
-
-
-
-
-/* Stat Card Enhancements */
-.stat-card {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-unit) * 2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  min-height: 100px; /* Ensure consistent height */
 }
 
 .card-icon-wrapper {
@@ -302,15 +206,29 @@ body {
 .card-icon-wrapper.alerts { background-color: #ffa726; } /* Orange */
 .card-icon-wrapper.wards { background-color: #66bb6a; } /* Green */
 
+.card-content {
+  flex-grow: 1;
+}
+.card-title {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+.card-value {
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-top: var(--spacing-unit);
+}
 .card-trend {
-    font-size: 12px;
-    font-weight: 500;
+  font-size: 12px;
+  font-weight: 500;
 }
 .trend-positive {
-    color: var(--accent-color-success);
+  color: var(--accent-color-success);
 }
 .trend-negative {
-    color: var(--accent-color-danger);
+  color: var(--accent-color-danger);
 }
 
 /* Stat Card Loading Skeleton */
@@ -344,116 +262,229 @@ body {
   animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
+/* Main Content Cards (for map, charts, etc.) */
+.content-card {
+  background-color: var(--bg-sidebar);
+  padding: calc(var(--spacing-unit) * 3);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--box-shadow);
+  margin-top: calc(var(--spacing-unit) * 3);
+  height: 100%; /* Ensure full height within grid */
+}
+.content-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: calc(var(--spacing-unit) * 2);
+}
+.content-card-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+}
 
+/* Chart Container */
+.chart-container {
+  height: 400px; /* Ensure chart renders */
+  width: 100%;
+  position: relative;
+}
+
+/* Map Container */
 .map-container-wrapper {
-    height: 500px; /* Or any desired height */
-    width: 100%;
-    border-radius: var(--border-radius);
-    overflow: hidden; /* Ensures the map corners are rounded */
-    border: 1px solid var(--border-color);
+  height: 500px; /* Or any desired height */
+  width: 100%;
+  border-radius: var(--border-radius);
+  overflow: hidden; /* Ensures the map corners are rounded */
+  border: 1px solid var(--border-color);
+  position: relative;
 }
 
 .leaflet-container {
-    font-family: var(--font-family-main);
+  font-family: var(--font-family-main);
+  height: 100% !important; /* Override Leaflet default */
+  width: 100% !important;
 }
 
+/* Legend */
 .legend-container {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    line-height: 1.5;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  line-height: 1.5;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
 }
 
 .legend-container h4 {
-    margin: 0 0 5px 0;
-    font-size: 14px;
+  margin: 0 0 5px 0;
+  font-size: 14px;
 }
 
 .legend-color-box {
-    width: 18px;
-    height: 18px;
-    display: inline-block;
-    margin-right: 5px;
-    vertical-align: middle;
-    border: 1px solid #ccc;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  margin-right: 5px;
+  vertical-align: middle;
+  border: 1px solid #ccc;
 }
 
+/* Buttons */
+.btn {
+  padding: calc(var(--spacing-unit) * 1.25) calc(var(--spacing-unit) * 2.5);
+  border-radius: var(--border-radius);
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+}
+.btn-primary:hover {
+  background-color: var(--primary-color-dark);
+}
 
+/* Forms (for Login) */
+.form-group {
+  margin-bottom: calc(var(--spacing-unit) * 2);
+}
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-unit);
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+.form-group input {
+  width: 100%;
+  padding: calc(var(--spacing-unit) * 1.5);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-family: var(--font-family-main);
+  font-size: 16px;
+}
+.form-group input:focus {
+  outline: 2px solid var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* Filter Bar */
 .filter-bar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    padding: 16px;
-    background-color: #fff;
-    border-radius: var(--border-radius);
-    margin-bottom: 24px;
-    border: 1px solid var(--border-color);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  margin-bottom: 24px;
+  border: 1px solid var(--border-color);
 }
 
 .filter-group {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .filter-group label {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
 }
 
 .filter-group select,
 .filter-group input {
-    padding: 8px 12px;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    background-color: var(--background-color);
-    font-family: var(--font-family-main);
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--background-color);
+  font-family: var(--font-family-main);
 }
 
 .filter-bar .btn-secondary {
-    align-self: flex-end;
+  align-self: flex-end;
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+}
+.filter-bar .btn-secondary:hover {
+  background-color: darken(var(--secondary-color), 10%);
 }
 
 /* Data Table Styling */
 .table-container {
-    width: 100%;
-    overflow-x: auto; /* For responsiveness on small screens */
+  width: 100%;
+  overflow-x: auto;
 }
 
 .data-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
 }
 
 .data-table th,
 .data-table td {
-    padding: 12px 16px;
-    text-align: left;
-    border-bottom: 1px solid var(--border-color);
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .data-table th {
-    background-color: var(--background-color);
-    font-weight: 600;
-    color: var(--text-secondary);
+  background-color: var(--background-color);
+  font-weight: 600;
+  color: var(--text-secondary);
 }
 
 .data-table tbody tr:hover {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 .risk-pill {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: 500;
-    color: #fff;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
 }
 
 .risk-pill.risk-high { background-color: var(--accent-color-danger); }
 .risk-pill.risk-medium { background-color: var(--accent-color-warning); }
 .risk-pill.risk-low { background-color: var(--accent-color-success); }
+
+/* -------------------------------------------------------------------
+ * ## 4. Responsive Design
+ * ------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr; /* Stack sidebar and main content */
+    grid-template-areas:
+      "header"
+      "main";
+  }
+  .sidebar {
+    position: absolute;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+    height: 100vh;
+    width: 260px;
+  }
+  .sidebar.is-open {
+    transform: translateX(0);
+  }
+  .main-content {
+    padding: calc(var(--spacing-unit) * 2);
+  }
+  .stats-grid {
+    grid-template-columns: 1fr; /* Stack stat cards */
+  }
+  .content-card {
+    margin-top: calc(var(--spacing-unit) * 2);
+  }
+}

@@ -1,3 +1,4 @@
+import React from 'react';  // Added: Required for JSX
 import { useState, createContext, useContext, useEffect } from 'react';
 
 // Ek context banayein jo authentication state ko poore app mein share karega
@@ -73,7 +74,6 @@ export const AuthProvider = ({ children }) => {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
-// Custom hook banayein taaki components aasani se context ka istemal kar sakein
 export const useAuth = () => {
   return useContext(AuthContext);
 };

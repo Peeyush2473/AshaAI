@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth.js'; // Fixed path
+import { useAuth } from '../hooks/useAuth.jsx'; // Fixed path
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -12,8 +12,8 @@ import {
   Legend,
 } from 'chart.js';
 
-import Sidebar from '../components/SideBar.js'; // Fixed path
-import TrendChart from '../components/TrendChart.js'; // Fixed path
+import Sidebar from '../components/SideBar.jsx'; // Fixed path
+import TrendChart from '../components/TrendChart.jsx'; // Fixed path
 
 // Register the necessary components for Chart.js Bar chart
 ChartJS.register(

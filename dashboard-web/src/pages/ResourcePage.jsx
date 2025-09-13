@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth.js';
-import Sidebar from '../components/SideBar.js';
+import { useAuth } from '../hooks/useAuth.jsx';
+import Sidebar from '../components/SideBar.jsx';
 
 // A reusable layout component for dashboard pages
 const DashboardLayout = ({ user, children }) => (

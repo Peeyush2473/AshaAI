@@ -1,34 +1,38 @@
 import React, { useState, useEffect } from 'react';
+import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';  // Correct: Direct imports
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';  // Essential: Import Leaflet styles
 
-// react-leaflet se components ab window object se aayenge
-const { MapContainer, TileLayer, GeoJSON, Popup } = window.ReactLeaflet;
+// Fix default marker icons (prevents icon errors)
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png',
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+});
 
-// --- MOCK DATA (Asli app mein yeh API se aayega) ---
-
-// 1. Bhopal Wards ke liye Mock GeoJSON
+// Mock GeoJSON for Bhopal Wards (from your code)
 const bhopalGeoJSON = {
   "type": "FeatureCollection",
   "features": [
-    { "type": "Feature", "properties": { "ward_id": 1, "ward_name": "Ward 1" }, "geometry": { "type": "Polygon", "coordinates": [ [ [77.3, 23.2], [77.4, 23.2], [77.4, 23.3], [77.3, 23.3], [77.3, 23.2] ] ] } },
-    { "type": "Feature", "properties": { "ward_id": 2, "ward_name": "Ward 2" }, "geometry": { "type": "Polygon", "coordinates": [ [ [77.4, 23.2], [77.5, 23.2], [77.5, 23.3], [77.4, 23.3], [77.4, 23.2] ] ] } },
-    { "type": "Feature", "properties": { "ward_id": 3, "ward_name": "Ward 3" }, "geometry": { "type": "Polygon", "coordinates": [ [ [77.3, 23.3], [77.4, 23.3], [77.4, 23.4], [77.3, 23.4], [77.3, 23.3] ] ] } }
+    { "type": "Feature", "properties": { "ward_id": 1, "ward_name": "Ward 1" }, "geometry": { "type": "Polygon", "coordinates": [[[77.3, 23.2], [77.4, 23.2], [77.4, 23.3], [77.3, 23.3], [77.3, 23.2]]] } },
+    { "type": "Feature", "properties": { "ward_id": 2, "ward_name": "Ward 2" }, "geometry": { "type": "Polygon", "coordinates": [[[77.4, 23.2], [77.5, 23.2], [77.5, 23.3], [77.4, 23.3], [77.4, 23.2]]] } },
+    { "type": "Feature", "properties": { "ward_id": 3, "ward_name": "Ward 3" }, "geometry": { "type": "Polygon", "coordinates": [[[77.3, 23.3], [77.4, 23.3], [77.4, 23.4], [77.3, 23.4], [77.3, 23.3]]] } }
   ]
 };
 
-// 2. Health Data ka Mockup
+// Mock Health Data (from your code)
 const wardHealthData = {
   1: { risk: 'High', screenings: 152, highRiskCases: 25 },
   2: { risk: 'Low', screenings: 98, highRiskCases: 3 },
   3: { risk: 'Medium', screenings: 120, highRiskCases: 12 },
 };
 
-// --- COMPONENT LOGIC ---
-
 const Heatmap = () => {
   const [mapData, setMapData] = useState(null);
 
   useEffect(() => {
-    // Data fetch aur merge karne ka simulation
+    // Simulate data fetch and merge
     const mergedData = {
       ...bhopalGeoJSON,
       features: bhopalGeoJSON.features.map(feature => ({
@@ -73,40 +77,32 @@ const Heatmap = () => {
   };
 
   const Legend = () => (
-    <div className="leaflet-bottom leaflet-right">
-      <div className="legend-container">
-        <h4>Risk Level</h4>
-        <div><span className="legend-color-box" style={{backgroundColor: '#c62828'}}></span> High</div>
-        <div><span className="legend-color-box" style={{backgroundColor: '#f57c00'}}></span> Medium</div>
-        <div><span className="legend-color-box" style={{backgroundColor: '#2e7d32'}}></span> Low</div>
-      </div>
+    <div className="legend-container" style={{ position: 'absolute', bottom: '20px', right: '20px', background: 'white', padding: '10px', borderRadius: '5px' }}>
+      <h4>Risk Level</h4>
+      <div><span style={{ display: 'inline-block', width: '15px', height: '15px', backgroundColor: '#c62828', marginRight: '5px' }}></span> High</div>
+      <div><span style={{ display: 'inline-block', width: '15px', height: '15px', backgroundColor: '#f57c00', marginRight: '5px' }}></span> Medium</div>
+      <div><span style={{ display: 'inline-block', width: '15px', height: '15px', backgroundColor: '#2e7d32', marginRight: '5px' }}></span> Low</div>
     </div>
   );
 
   if (!mapData) {
     return <div className="loading-map">Loading Map Data...</div>;
   }
-  
-  const mapPosition = [23.2599, 77.4126];
+
+  const mapPosition = [23.2599, 77.4126]; // Bhopal coordinates
 
   return (
-    <div className="map-container-wrapper">
+    <div className="map-container-wrapper" style={{ height: '500px', width: '100%', position: 'relative' }}>
       <MapContainer center={mapPosition} zoom={12} style={{ height: '100%', width: '100%' }}>
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
         />
-        <GeoJSON 
-          data={mapData} 
-          style={styleGeoJSON} 
-          onEachFeature={onEachFeature}
-        />
-        {/* Legend ko MapContainer ke andar daalna zaroori hai */}
+        <GeoJSON data={mapData} style={styleGeoJSON} onEachFeature={onEachFeature} />
       </MapContainer>
-      <Legend /> 
+      <Legend />
     </div>
   );
 };
 
 export default Heatmap;
-

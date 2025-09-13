@@ -8,13 +8,13 @@ import {
 } from 'react-router-dom';
 
 // Import the AuthProvider and the useAuth hook
-import { AuthProvider, useAuth } from 'hooks/useAuth.js';
+import { AuthProvider, useAuth } from './hooks/useAuth.jsx';
 
 // Import all the page components
-import LoginPage from 'pages/LoginPage.jsx';
-import DashboardOverview from 'pages/DashboardOverview.jsx';
-import AnalyticsPage from 'pages/AnalyticsPage.jsx';
-import ResourcePage from 'pages/ResourcePage.jsx';
+import LoginPage from './pages/LoginPage.jsx';
+import DashboardOverview from './pages/DashboardOverview.jsx';
+import AnalyticsPage from './pages/AnalyticsPage.jsx';
+import ResourcePage from './pages/ResourcePage.jsx';
 
 /**
  * @component ProtectedRoute
