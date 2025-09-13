@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Favicon using a government-style emblem -->
+    <link rel="icon" type="image/svg+xml" href="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" />
+    <!-- Viewport meta tag for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Asha-AI | BMC Public Health Dashboard</title>
+
+    <!--
+      External CSS for Leaflet (Mapping Library)
+      This is included here to ensure it's loaded before the map component renders.
+    -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+  </head>
+  <body>
+    <!-- The root element where our React application will be mounted -->
+    <div id="root"></div>
+    
+    <!--
+      The main script for our application, bundled by Vite.
+      The 'type="module"' attribute is essential for modern JavaScript modules.
+    -->
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
