@@ -11,7 +11,7 @@ const DashboardLayout = ({ user, children }) => (
             {children}
         </main>
     </div>
-);
+);   
 
 // Mock data for ASHA workers
 const ashaWorkers = [
