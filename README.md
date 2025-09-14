@@ -1,4 +1,75 @@
-<div align="center"><img src="https://www.google.com/search?q=https://placehold.co/150x150/0D47A1/FFFFFF%3Ftext%3DAshaAI" alt="Asha AI Logo" width="150"/><h1>Asha AI 2.0</h1><p><b>Swasthya Aapke Saath, Data Sarkar Ke Paas.</b></p><p>An AI-powered, offline-first health ecosystem empowering community health workers and enabling data-driven governance.</p><p><img src="https://www.google.com/search?q=https://img.shields.io/badge/status-in%2520development-orange" alt="Status"/><img src="https://www.google.com/search?q=https://img.shields.io/badge/license-MIT-blue" alt="License"/><img src="https://www.google.com/search?q=https://img.shields.io/github/stars/Peeyush2473/AshaAI%3Fstyle%3Dsocial" alt="GitHub Stars"/></p></div>🎯 About The ProjectIn regions like Madhya Pradesh, a silent, multi-faceted health crisis of anemia, malnutrition, and maternal complications persists. Frontline health workers are overburdened, diagnostic tests are inaccessible, and the administration lacks the real-time, hyperlocal data needed to intervene effectively.Asha AI 2.0 is our solution: a comprehensive ecosystem designed to bridge this gap. It consists of two core components:A React Native Mobile App that transforms a smartphone into an AI-powered, offline-first diagnostic lab for ASHA and Anganwadi workers.A React Web Dashboard that provides public health officials with a live "Health Map" of their administrative area, enabling targeted, data-driven interventions.✨ Key Features📱 For ASHA Workers (Mobile App)Offline-First AI Diagnostics: Conduct non-invasive screenings for Anemia, Jaundice, and Vitals without an internet connection.On-Device Data Storage: Securely manage citizen profiles and their complete health history locally on the device.AI Nutritionist: Generate culturally relevant and budget-friendly weekly meal plans.Health Center Locator: Instantly find and navigate to the nearest PHCs and CHCs using GPS.Smart Data Sync: Automatically syncs anonymous, aggregated data to the backend when an internet connection is available.💻 For Health Officials (Web Dashboard)Live Health Heatmap: Visualize real-time health risk levels across different administrative wards.Data-Driven Analytics: Track health trends over time with interactive charts and demographic breakdowns.AI-Powered Suggestions: Get recommendations on where to deploy mobile health camps and allocate resources.Campaign Planner: Design targeted and effective public health campaigns based on real data.Secure & Role-Based Access: A secure login system for different levels of officials.🛠️ Tech StackOur entire platform is built on a modern, scalable, and open-source stack.CategoryTechnologiesBackend APIWeb DashboardMobile AppAI / ML🏗️ System ArchitectureOur system is built on an "AI on the Edge" principle, ensuring functionality in low-connectivity areas and maintaining data privacy.(Note: You will need to upload the architecture diagram image to your GitHub repo and update this link.)🚀 Getting StartedFollow these steps to get the entire project up and running on your local machine.PrerequisitesNode.js (v18 or later)Python (v3.9 or later)An IDE (e.g., VS Code)Git1. Backend API (backend-api)# 1. Navigate to the backend directory
+# 🎉 Asha AI 2.0: Empowering Health for All 🌟
+
+[![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)  
+[![React Native](https://img.shields.io/badge/React_Native-0.74.1-orange.svg)](https://reactnative.dev/)  
+[![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)  
+[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)  
+
+Welcome to **Asha AI 2.0**, a revolutionary ecosystem designed to combat the silent health crisis in regions like Madhya Pradesh. This project bridges the gap between overburdened frontline health workers and data-driven public health interventions with cutting-edge technology.
+
+---
+
+## 🎯 About The Project
+
+In regions like Madhya Pradesh, a multi-faceted health crisis—encompassing **anemia**, **malnutrition**, and **maternal complications**—persists due to inaccessible diagnostics and a lack of real-time data for administrators. **Asha AI 2.0** is our bold solution, featuring:
+
+- **React Native Mobile App**: Transforms smartphones into offline-first, AI-powered diagnostic tools for ASHA and Anganwadi workers.
+- **React Web Dashboard**: Offers public health officials a live "Health Map" for targeted, data-driven decisions.
+
+🌍 **Mission**: Empower communities with technology to save lives and improve health outcomes.
+
+---
+
+## ✨ Key Features
+
+### 📱 For ASHA Workers (Mobile App)
+- **Offline-First AI Diagnostics**: Screen for **Anemia**, **Jaundice**, and **Vitals** without internet.
+- **On-Device Data Storage**: Securely manage citizen profiles and health histories locally.
+- **AI Nutritionist**: Generate culturally relevant, budget-friendly weekly meal plans.
+- **Health Center Locator**: Navigate to nearby PHCs and CHCs with GPS.
+- **Smart Data Sync**: Anonymously sync aggregated data when online.
+
+### 💻 For Health Officials (Web Dashboard)
+- **Live Health Heatmap**: Visualize real-time risk levels across wards.
+- **Data-Driven Analytics**: Explore trends with interactive charts and demographics.
+- **AI-Powered Suggestions**: Identify optimal locations for health camps.
+- **Campaign Planner**: Design effective, data-backed public health campaigns.
+- **Secure & Role-Based Access**: Tailored login for different official levels.
+
+---
+
+## 🛠️ Tech Stack
+
+| Category         | Technologies                          |
+|------------------|---------------------------------------|
+| **Backend API**  | Flask, SQLite, REST API               |
+| **Web Dashboard**| React, Vite, Tailwind CSS             |
+| **Mobile App**   | React Native, TensorFlow Lite, SQLite |
+| **AI / ML**      | TensorFlow Lite, Custom Models        |
+
+---
+
+## 🏗️ System Architecture
+
+Our "AI on the Edge" architecture ensures functionality in low-connectivity areas while prioritizing data privacy.  
+*(Note: Upload the architecture diagram image to your GitHub repo and update the link below.)*  
+![Architecture Diagram](path/to/architecture-diagram.png)
+
+---
+
+## 🚀 Getting Started
+
+Ready to dive in? Follow these steps to set up the project locally. ✨
+
+### Prerequisites
+- **Node.js** (v18 or later) [Download](https://nodejs.org/)
+- **Python** (v3.9 or later) [Download](https://www.python.org/)
+- **An IDE** (e.g., VS Code) [Download](https://code.visualstudio.com/)
+- **Git** [Download](https://git-scm.com/)
+
+### 1. Backend API (backend-api)
+```bash
+# 1. Navigate to the backend directory
 cd backend-api
 
 # 2. Create and activate a virtual environment
@@ -21,7 +92,12 @@ flask seed_db
 
 # 5. Run the server
 flask run --host=0.0.0.0
-✅ Your backend is now running at http://localhost:50002. Web Dashboard (dashboard-web)# 1. Open a new terminal and navigate to the dashboard directory
+```
+✅ **Backend running at http://localhost:5000**
+
+### 2. Web Dashboard (dashboard-web)
+```bash
+# 1. Open a new terminal and navigate to the dashboard directory
 cd dashboard-web
 
 # 2. Install dependencies
@@ -29,7 +105,12 @@ npm install
 
 # 3. Run the development server
 npm run dev
-✅ Your web dashboard is now live at http://localhost:5173 (or similar).3. Mobile App (mobile-app)# 1. Open a third terminal and navigate to the mobile app directory
+```
+✅ **Web dashboard live at http://localhost:5173 (or similar)**
+
+### 3. Mobile App (mobile-app)
+```bash
+# 1. Open a third terminal and navigate to the mobile app directory
 cd mobile-app
 
 # 2. Install dependencies
@@ -43,3 +124,72 @@ npx react-native start
 npx react-native run-android
 # For iOS:
 # npx react-native run-ios
+```
+✅ **Mobile app running on emulator/device**
+
+---
+
+## 👥 Team Members
+
+| Name            | Role             | GitHub ID          |
+|-----------------|------------------|--------------------|
+| Anurag Sharma   | Project Lead     | @anurag-sharma-dev |
+| Priya Patel     | Backend Developer| @priya-patel-code  |
+| Rahul Verma     | Mobile Developer | @rahul-verma-tech  |
+| Sneha Gupta     | UI/UX Designer   | @sneha-gupta-ui    |
+
+*(Add your team members' names and GitHub IDs here!)*
+
+---
+
+## 📝 Contributing
+
+We welcome contributions! Please fork the repository, create a feature branch, and submit a pull request. Follow our [Contributing Guidelines](CONTRIBUTING.md) for details.
+
+---
+
+## 📜 License
+
+This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute it!
+
+---
+
+## 🌟 Support
+
+Have questions or need help? Open an issue on our [GitHub Issues](https://github.com/your-repo/asha-ai-2.0/issues) page or join our community on [Discord](https://discord.gg/your-invite-link).
+
+---
+
+### 🎨 Made with ❤️ by the Asha AI Team
+```
+
+### Enhancements and Notes
+1. **Attractive Design**:
+   - Used emojis (🎉, 🌟, 📱, 💻, etc.) for a vibrant look.
+   - Added badges for tech stacks and license to make it professional yet eye-catching.
+   - Structured with clear sections using headers and horizontal rules (`---`).
+
+2. **Content Integration**:
+   - Incorporated all provided content (About, Features, Tech Stack, Architecture, Getting Started).
+   - Added placeholders for the architecture diagram and team members (customize with real data).
+
+3. **Team Members**:
+   - Included a table with sample names and GitHub IDs. Replace `@anurag-sharma-dev`, etc., with your actual team members' GitHub handles.
+   - Add or remove rows as needed.
+
+4. **Customization**:
+   - Update the architecture diagram path (e.g., `path/to/architecture-diagram.png`) with the actual file location after uploading to your repo.
+   - Replace GitHub/Discord links with your project's URLs.
+   - Create a `LICENSE` file and `CONTRIBUTING.md` if not already present.
+
+5. **Next Steps**:
+   - Save this as `README.md` in `D:\asha-ai-project\mobile-app`.
+   - Commit and push to your GitHub repo:
+     ```
+     git add README.md
+     git commit -m "Add beautiful README file"
+     git push origin main
+     ```
+   - View it on GitHub to ensure it renders correctly.
+
+Let me know if you'd like to tweak the design or add more sections! (Current time: 04:50 PM IST, September 14, 2025.)
