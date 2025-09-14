@@ -21,3 +21,5 @@ class UserModel(db.Model):
             'ward_id': self.ward_id,
             'created_at': self.created_at.isoformat()
         }
+
+
