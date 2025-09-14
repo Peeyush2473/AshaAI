@@ -52,8 +52,8 @@ In regions like Madhya Pradesh, a multi-faceted health crisis—encompassing **a
 ## 🏗️ System Architecture
 
 Our "AI on the Edge" architecture ensures functionality in low-connectivity areas while prioritizing data privacy.  
-*(Note: Upload the architecture diagram image to your GitHub repo and update the link below.)*  
-![Architecture Diagram](path/to/architecture-diagram.png)
+
+![Architecture Diagram](documentation/AshaAI%202.0%20arch%20diagram.svg)
 
 ---
 
