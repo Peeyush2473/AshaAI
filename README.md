@@ -129,67 +129,25 @@ npx react-native run-android
 
 ---
 
-## 👥 Team Members
+## Group Members
 
-| Name            | Role             | GitHub ID          |
-|-----------------|------------------|--------------------|
-| Anurag Sharma   | Project Lead     | @anurag-sharma-dev |
-| Priya Patel     | Backend Developer| @priya-patel-code  |
-| Rahul Verma     | Mobile Developer | @rahul-verma-tech  |
-| Sneha Gupta     | UI/UX Designer   | @sneha-gupta-ui    |
+<table style="width: 100%; border-collapse: collapse; text-align:center;">
+        <tr>
+            <th><a href="https://github.com/Peeyush2473">Peeyush Chauhan</a></th>
+            <th><a href="https://github.com/AnuragWaskle">Anurag Waskle</a></th>
+            <th><a href="https://github.com/AjitPatil">Ajit Patil</a></th>
+            <th><a href="https://github.com/KanakGarg">Kanak Garg</a></th>
+            <th><a href="https://github.com/Soham16Malvankar">Soham Malvankar</a></th>
+        </tr>
+        <tr>
+            <td><img src="https://avatars.githubusercontent.com/Peeyush2473" alt="Peeyush Chauhan"></td>
+            <td><img src="https://avatars.githubusercontent.com/AnuragWaskle" alt="Anurag Waskle"></td>
+            <td><img src="https://avatars.githubusercontent.com/AjitPatil" alt="Ajit Patil"></td>
+            <td><img src="https://avatars.githubusercontent.com/KanakGarg" alt="Kanak Garg"></td>
+            <td><img src="https://avatars.githubusercontent.com/Soham16Malvankar" alt="Soham Malvankar"></td>
+        </tr>
+</table>
 
-*(Add your team members' names and GitHub IDs here!)*
+## License
 
----
-
-## 📝 Contributing
-
-We welcome contributions! Please fork the repository, create a feature branch, and submit a pull request. Follow our [Contributing Guidelines](CONTRIBUTING.md) for details.
-
----
-
-## 📜 License
-
-This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute it!
-
----
-
-## 🌟 Support
-
-Have questions or need help? Open an issue on our [GitHub Issues](https://github.com/your-repo/asha-ai-2.0/issues) page or join our community on [Discord](https://discord.gg/your-invite-link).
-
----
-
-### 🎨 Made with ❤️ by the Asha AI Team
-```
-
-### Enhancements and Notes
-1. **Attractive Design**:
-   - Used emojis (🎉, 🌟, 📱, 💻, etc.) for a vibrant look.
-   - Added badges for tech stacks and license to make it professional yet eye-catching.
-   - Structured with clear sections using headers and horizontal rules (`---`).
-
-2. **Content Integration**:
-   - Incorporated all provided content (About, Features, Tech Stack, Architecture, Getting Started).
-   - Added placeholders for the architecture diagram and team members (customize with real data).
-
-3. **Team Members**:
-   - Included a table with sample names and GitHub IDs. Replace `@anurag-sharma-dev`, etc., with your actual team members' GitHub handles.
-   - Add or remove rows as needed.
-
-4. **Customization**:
-   - Update the architecture diagram path (e.g., `path/to/architecture-diagram.png`) with the actual file location after uploading to your repo.
-   - Replace GitHub/Discord links with your project's URLs.
-   - Create a `LICENSE` file and `CONTRIBUTING.md` if not already present.
-
-5. **Next Steps**:
-   - Save this as `README.md` in `D:\asha-ai-project\mobile-app`.
-   - Commit and push to your GitHub repo:
-     ```
-     git add README.md
-     git commit -m "Add beautiful README file"
-     git push origin main
-     ```
-   - View it on GitHub to ensure it renders correctly.
-
-Let me know if you'd like to tweak the design or add more sections! (Current time: 04:50 PM IST, September 14, 2025.)
+MIT © Project NETRA contributors
