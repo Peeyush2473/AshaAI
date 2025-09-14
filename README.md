@@ -135,15 +135,15 @@ npx react-native run-android
         <tr>
             <th><a href="https://github.com/Peeyush2473">Peeyush Chauhan</a></th>
             <th><a href="https://github.com/AnuragWaskle">Anurag Waskle</a></th>
-            <th><a href="https://github.com/AjitPatil">Ajit Patil</a></th>
-            <th><a href="https://github.com/KanakGarg">Kanak Garg</a></th>
+            <th><a href="https://github.com/AjitgoudaPatil">Ajit Patil</a></th>
+            <th><a href="https://github.com/KANAK0708">Kanak Garg</a></th>
             <th><a href="https://github.com/Soham16Malvankar">Soham Malvankar</a></th>
         </tr>
         <tr>
             <td><img src="https://avatars.githubusercontent.com/Peeyush2473" alt="Peeyush Chauhan"></td>
             <td><img src="https://avatars.githubusercontent.com/AnuragWaskle" alt="Anurag Waskle"></td>
-            <td><img src="https://avatars.githubusercontent.com/AjitPatil" alt="Ajit Patil"></td>
-            <td><img src="https://avatars.githubusercontent.com/KanakGarg" alt="Kanak Garg"></td>
+            <td><img src="https://avatars.githubusercontent.com/AjitgoudaPatil" alt="Ajit Patil"></td>
+            <td><img src="https://avatars.githubusercontent.com/KANAK0708" alt="Kanak Garg"></td>
             <td><img src="https://avatars.githubusercontent.com/Soham16Malvankar" alt="Soham Malvankar"></td>
         </tr>
 </table>
